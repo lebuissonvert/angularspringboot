@@ -1,0 +1,50 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #documentForm="ngForm">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm">
+            <label for="id">Id</label>
+            <input type="text" [(ngModel)]="document.idDocument"
+                   class="form-control"
+                   id="id"
+                   name="id"
+                   placeholder="Auto-généré"
+                   #name="ngModel"
+                   readonly>
+          </div>
+          <div class="col-sm">
+          </div>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-sm">
+            <label for="login">Code : </label>
+            <input type="text" [(ngModel)]="document.codeDocument"
+                   class="form-control"
+                   id="login"
+                   name="login"
+                   placeholder="Enter code document"
+                   minlength="3"
+                   required #name="ngModel">
+          </div>
+          <div class="col-sm">
+            <label for="file">Blob : </label>
+            <div class="custom-file">
+              <label for="file" class="custom-file-label">Choose File</label>
+              <input type="file"
+                     id="file"
+                     class="custom-file-input"
+                     (change)="handleFileInput($event.target.files)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div [hidden]="document.document && document.document!=null" class="alert alert-danger">Blob is required</div>
+      <button type="submit" [disabled]="!documentForm.form.valid || !(document.document && document.document!=null)"
+              class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>

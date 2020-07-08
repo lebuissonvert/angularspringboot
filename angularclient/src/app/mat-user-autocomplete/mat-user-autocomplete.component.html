@@ -1,0 +1,104 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Autocomplete input</mat-label>
+    <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="doSelectionChanged($event.option)">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option.login}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  &nbsp;
+
+  <mat-form-field>
+    <mat-label>Select option</mat-label>
+    <mat-select (selectionChange)="doSelectionChanged($event)">
+      <mat-option *ngFor="let user of users" [value]="user">
+        {{user.login}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div *ngIf="selectedUser">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm">
+          <label for="id">Id :</label>
+          <input type="text" [(ngModel)]="selectedUser.id"
+                 class="form-control"
+                 id="id"
+                 name="id"
+                 readonly #name="ngModel"
+                 readonly>
+        </div>
+        <div class="col-sm">
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-sm">
+          <label for="login">Login : </label>
+          <input type="text" [(ngModel)]="selectedUser.login"
+                 class="form-control"
+                 id="login"
+                 name="login"
+                 readonly #name="ngModel">
+        </div>
+        <div class="col-sm">
+          <label for="pass">Password : </label>
+          <input type="text" [(ngModel)]="selectedUser.pass"
+                 class="form-control"
+                 id="pass"
+                 name="pass"
+                 readonly #name="ngModel">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm">
+          <label for="eloranking">Elo ranking : </label>
+          <input type="text" [(ngModel)]="selectedUser.eloranking"
+                 class="form-control"
+                 id="eloRanking"
+                 name="eloranking"
+                 readonly #name="ngModel">
+        </div>
+        <div class="col-sm">
+          <label for="idIcone">Icone : </label>
+          <input type="text" [(ngModel)]="selectedUser.icone.codeIcone"
+                 class="form-control"
+                 id="idIcone"
+                 name="idIcone"
+                 minlength="3"
+                 required #name="ngModel"
+                 readonly>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm">
+          <label for="wins">Wins : </label>
+          <input type="text" [(ngModel)]="selectedUser.wins"
+                 class="form-control"
+                 id="wins"
+                 name="wins"
+                 readonly #name="ngModel">
+        </div>
+        <div class="col-sm">
+          <label for="loses">Loses : </label>
+          <input type="text" [(ngModel)]="selectedUser.loses"
+                 class="form-control"
+                 id="loses"
+                 name="loses"
+                 readonly #name="ngModel">
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<br><br>
+
+

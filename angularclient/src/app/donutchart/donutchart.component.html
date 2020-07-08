@@ -1,0 +1,23 @@
+<p-card header="Stats des récompenses" subheader="vue donut" [style]="{width: '50%'}" styleClass="ui-card-shadow">
+  <p-chart #chartDonut type="doughnut" [data]="rewardStats"></p-chart>
+</p-card><br><br>
+
+<p-card header="Stats des récompenses" subheader="vue pie" [style]="{width: '50%'}" styleClass="ui-card-shadow">
+  <p-header>
+    <img src="Card" src="assets/images/barn-image.jpg"
+         style="display: block;margin-left: auto; margin-right: auto; width: '75%'">
+  </p-header>
+  <div>
+    <p-chart #chartPie type="pie" [data]="rewardStats"></p-chart>
+  </div>
+  <p-footer>
+    <button pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em"></button>
+    <button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>
+  </p-footer>
+</p-card><br><br>
+
+<p-card header="Stats des récompenses" subheader="vue polaire" [style]="{width: '50%'}" styleClass="ui-card-shadow">
+  <p-chart #chartPolar type="polarArea" [data]="rewardStats"></p-chart> <br>
+</p-card><br><br>
+
+<button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>

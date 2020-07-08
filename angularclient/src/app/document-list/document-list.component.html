@@ -1,0 +1,22 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped table-hover table-fit">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Code</th>
+        <th scope="col">Télécharger</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let document of documents">
+        <td [routerLink]="['/editdocument/', document.idDocument]">{{ document.idDocument }}</td>
+        <td [routerLink]="['/editdocument/', document.idDocument]">{{ document.codeDocument }}</td>
+        <td class="w-25" (click)="download(document.idDocument)" id="id-image-download-icon">
+          <img style="width:15%" class="img-fluid mx-auto d-block" [src]="downloadIconeURL"/>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

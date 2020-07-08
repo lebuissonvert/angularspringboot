@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="com/springsoap/gen"
+           targetNamespace="com/springsoap/gen" elementFormDefault="qualified">
+
+    <xs:element name="getCoursByMonthAndYearSoapRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="month" type="xs:string"/>
+                <xs:element name="year" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCoursByMonthAndYearSoapResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="listeCours" type="tns:listeCours"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="listeCours">
+        <xs:sequence>
+            <xs:element name="cours" type="tns:cours" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="cours">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="start" type="xs:date"/>
+            <xs:element name="end" type="xs:date"/>
+            <xs:element name="adresse" type="xs:string"/>
+            <xs:element name="niveau" type="xs:string"/>
+            <xs:element name="prof" type="xs:string"/>
+            <xs:element name="ville" type="xs:string"/>
+            <xs:element name="nbCavaliers" type="xs:int"/>
+            <xs:element name="nbCavalieres" type="xs:int"/>
+            <xs:element name="eleves" type="tns:listeEleves"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="listeEleves">
+        <xs:sequence>
+            <xs:element name="eleve" type="tns:eleve" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="eleve">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="typeEleve" type="tns:typeEleve"/>
+            <xs:element name="nom" type="xs:string"/>
+            <xs:element name="prenom" type="xs:string"/>
+            <xs:element name="mail" type="xs:string"/>
+            <xs:element name="tel" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="typeEleve">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Guideur" />
+            <xs:enumeration value="Guidé" />
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

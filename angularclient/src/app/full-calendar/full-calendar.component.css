@@ -1,0 +1,50 @@
+.center {
+  margin: auto;
+  width: 75%;
+  /*border: 3px solid green;*/
+  padding: 10px;
+}
+
+.txt-strong {
+  font-weight: 900;
+  color: #F4B60B;
+}
+
+.txt-light {
+    font-weight: 900;
+    color: #999;
+    font-variant: small-caps;
+}
+
+@font-face {
+    font-family: dirty_headlineregular;
+    src: url("/assets/fonts/dirtyheadline2-webfont.woff") format("woff");
+}
+
+.txt-title {
+    font-family: 'dirty_headlineregular',Arial, Sans-Serif !important;
+    font-size: 20px;
+    color: #B82B0F;
+}
+
+h6 {
+    color: #C33415;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+.dialogdate {
+    background-color: black;
+    padding: 5px 10px;
+    color: #fff;
+    font-weight: 900;
+    margin: 0;
+}
+
+.dialogheure {
+    background-color: #F4B60B;
+    padding: 5px 10px;
+    color: #333;
+    font-weight: 900;
+    margin: 0;
+}

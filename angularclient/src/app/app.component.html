@@ -1,0 +1,62 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card bg-dark my-5">
+        <div class="card-body">
+          <h2 class="card-title text-center text-white py-3">{{ title }}</h2>
+          <ul class="text-center list-inline py-0">
+            <li class="list-inline-item">
+              <a routerLink="/users" class="btn btn-info">List Users (HTML)</a>
+            </li>
+            <li class="list-inline-item">
+              <a routerLink="/adduser" class="btn btn-info">Add User (HTML)</a>
+            </li>
+            <li class="list-inline-item">
+              <a routerLink="/charts" class="btn btn-info">Charts (Prime NG)</a>
+            </li>
+          </ul>
+          <ul class="text-center list-inline py-0">
+            <li class="list-inline-item">
+              <a routerLink="/users-primeng" class="btn btn-info">List Users (Prime NG - Full)</a>
+            </li>
+            <li class="list-inline-item">
+              <a routerLink="/users-primeng-lazy" class="btn btn-info">List Users (Prime NG - Lazy)</a>
+            </li>
+            <li class="list-inline-item">
+              <a routerLink="/users-filtering-primeng-lazy" class="btn btn-info">List Users (Prime NG - Lazy - Filtered)</a>
+            </li>
+          </ul>
+          <ul class="text-center list-inline py-0">
+            <li class="list-inline-item">
+              <a routerLink="/users-material" class="btn btn-info">List Users (Material - Full)</a>
+            </li>
+            <li class="list-inline-item">
+              <a routerLink="/users-primeng-lazy" class="btn btn-info disabled">List Users (Material - Lazy)</a>
+            </li>
+            <li class="list-inline-item">
+              <a routerLink="/users-filtering-primeng-lazy" class="btn btn-info disabled">List Users (Material - Lazy - Filtered)</a>
+            </li>
+          </ul>
+          <ul class="text-center list-inline py-0">
+            <li class="list-inline-item">
+              <a routerLink="/documents" class="btn btn-info">List Documents (HTML)</a>
+            </li>
+            <li class="list-inline-item">
+              <a routerLink="/adddocument" class="btn btn-info">Add Document (HTML)</a>
+            </li>
+          </ul>
+          <ul class="text-center list-inline py-0">
+            <li class="list-inline-item">
+              <a routerLink="/mat-autocomplete-users" class="btn btn-info">Autocomplete users (Material)</a>
+            </li>
+            <li class="list-inline-item">
+              <a routerLink="/full-calendar" class="btn btn-info">Full calendar (Prime NG)</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,103 @@
+
+<div id='calendar' class="center">
+  <p-fullCalendar [events]="cours" [options]="options"></p-fullCalendar>
+</div>
+
+<p-dialog [(visible)]="displayDialog" [style]="{'width':'37.5em', 'line-height': '1.6'}">
+  <p-header style="font-family: 'dirty_headlineregular',Arial, Sans-Serif; color: #000!important; font-size: 20px;">
+    Cours avec {{selectedCours.prof}} - {{selectedCours.ville}}
+  </p-header>
+    <div class="txt-title">{{selectedCours.niveau}}</div>
+    <div class="dialogdate">Le : {{selectedCours.start | date:'dd/MM/yyyy'}}</div>
+    <div class="dialogheure">De : {{selectedCours.start | date:'HH:mm'}} - {{selectedCours.end | date:'HH:mm'}}</div>
+    <br>
+    <div><span class="txt-light">Chez :</span> {{selectedCours.prof}}</div>
+    <div><span class="txt-light">Adresse :</span> {{selectedCours.adresse}}</div>
+    <div><span class="txt-light">Ville :</span> {{selectedCours.ville}}</div>
+    <div>
+      <span class="txt-strong">Places guideur restantes :</span> {{selectedCours.nbCavaliers - this.getElevesInSelectedCoursOfTypeEleve("guideur").length}} / {{selectedCours.nbCavaliers}}
+    </div>
+    <div>
+      <span class="txt-strong">Places guidé restantes :</span> {{selectedCours.nbCavalieres - this.getElevesInSelectedCoursOfTypeEleve("guidé").length}} / {{selectedCours.nbCavalieres}}
+    </div>
+    <br>
+
+    <div *ngIf="(selectedCours.nbCavaliers - this.getElevesInSelectedCoursOfTypeEleve('guideur').length) > 0 || (selectedCours.nbCavaliers - this.getElevesInSelectedCoursOfTypeEleve('guidé').length) > 0; else elseBlock">
+      <div class="row">
+        <div class="col-sm">
+          <label>Guideur ou Guidé :</label><br>
+          <p-dropdown id="typeeleve" name="typeeleve"
+                      [options]="typesEleve" [(ngModel)]="eleve.typeEleve"
+                      optionLabel="codetypeeleve" placeholder="Choisissez un camp"></p-dropdown>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <label for="nom">Nom :</label>
+          <input type="text" [(ngModel)]="eleve.nom"
+                 class="form-control"
+                 id="nom"
+                 name="nom"
+                 placeholder="Votre nom"
+                 minlength="3"
+                 required #name="ngModel">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <label for="prenom">Prénom :</label>
+          <input type="text" [(ngModel)]="eleve.prenom"
+                 class="form-control"
+                 id="prenom"
+                 name="prenom"
+                 placeholder="Votre prénom"
+                 minlength="3"
+                 required #name="ngModel">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <label for="mail">Mail :</label>
+          <input type="text" [(ngModel)]="eleve.mail"
+                 class="form-control"
+                 id="mail"
+                 name="mail"
+                 placeholder="Votre mail"
+                 minlength="3"
+                 required #name="ngModel">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <label for="tel">Tel :</label>
+          <input type="text" [(ngModel)]="eleve.tel"
+                 class="form-control"
+                 id="tel"
+                 name="tel"
+                 placeholder="Votre tel"
+                 minlength="3"
+                 required #name="ngModel">
+        </div>
+      </div>
+    </div>
+    <ng-template #elseBlock>Il n'est plus possible de s'inscrire pour ce cours<br></ng-template>
+
+    <br>
+    <div><h6>Guideurs inscrits :</h6></div>
+    <div *ngFor="let eleve of this.getElevesInSelectedCoursOfTypeEleve('guideur')">
+      <div>{{ eleve.nom }} {{ eleve.prenom }}</div>
+    </div>
+    <br>
+    <div><h6>Guidés inscrits :</h6></div>
+    <div *ngFor="let eleve of this.getElevesInSelectedCoursOfTypeEleve('guidé')">
+      <div>{{ eleve.nom }} {{ eleve.prenom }}</div>
+    </div>
+  <p-footer>
+    <button type="button" (click)="enregistrerEleve()" icon="pi pi-check" pButton label="Enregistrer"></button>
+    <button type="button" (click)="hideDialog()" pButton label="Fermer"></button>
+  </p-footer>
+</p-dialog>

@@ -1,0 +1,39 @@
+<p-table #dt [columns]="cols" [value]="users"
+         [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,15,20]"
+         [totalRecords]="totalRecords" [lazy]="true" (onLazyLoad)="loadDataLazy($event)"
+         pageLinks="5" [loading]="loading">
+  <ng-template pTemplate="caption">
+    <div style="text-align: right">
+      <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+      <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+        {{col.header}}
+        <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+      </th>
+    </tr>
+    <tr>
+      <th *ngFor="let col of columns" [ngSwitch]="col.field">
+        <p-multiSelect *ngSwitchCase="'icone.codeIcone'" [options]="iconFilter"
+                       maxSelectedLabels="2" defaultLabel="Choose icone"
+                       (onChange)="dt.filter($event.value, col.field, 'in')"></p-multiSelect>
+        <input *ngSwitchCase="'login'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')" >
+        <div *ngSwitchCase="'eloranking'">
+          Value > {{elorankingFilter}}
+          <i class="pi pi-times" (click)="elorankingFilter=null;dt.filter(null, col.field, col.filterMatchMode)" style="cursor:pointer" *ngIf="elorankingFilter"></i>
+          <p-slider [style]="{'width':'100%','margin-top':'8px'}" [(ngModel)]="elorankingFilter" [min]="1000" [max]="2500" (onChange)="onElorankingChange($event, dt)"></p-slider>
+        </div>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-user let-columns="columns">
+    <tr [routerLink]="['/edituser/', user.id]">
+      <td *ngFor="let col of columns">
+        {{user|field:col}}
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

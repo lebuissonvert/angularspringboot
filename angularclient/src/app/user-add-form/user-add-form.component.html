@@ -1,0 +1,19 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="login">Login</label>
+        <input type="text" [(ngModel)]="user.login"
+               class="form-control"
+               id="login"
+               name="login"
+               placeholder="Enter your login"
+               minlength="3"
+               required #name="ngModel">
+      </div>
+      <div [hidden]="user.login && user.login.length > 2" class="alert alert-danger">Login is required (min 3 chars)</div>
+      <button type="submit" [disabled]="!userForm.form.valid"
+              class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>
