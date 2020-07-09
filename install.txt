@@ -1,5 +1,9 @@
 creation projet angular dans le projet maven de springboot :
 	à la racine : ng new angular client
+création des objets engular :
+	ng generate class <classe>
+	ng generate service <service>
+	ng generate component <composant>
 
 primeng :
 	npm install primeng --save
@@ -19,6 +23,7 @@ npm install @fullcalendar/interaction --save
 
 npm install bootstrap
 ajouter "@import '~bootstrap/dist/css/bootstrap.min.css'" dans styles.css
+
 
 Deploy:
 	SpringBoot : mvn clean install, récupérer le jar dans le repo maven
